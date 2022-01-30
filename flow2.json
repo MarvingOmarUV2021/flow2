@@ -1,0 +1,117 @@
+[
+    {
+        "id": "d01dd54a43c0372f",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1d420758603148e6",
+        "type": "inject",
+        "z": "d01dd54a43c0372f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 120,
+        "wires": [
+            [
+                "efa230a7b3b7c2c6"
+            ]
+        ]
+    },
+    {
+        "id": "197a163378edecc3",
+        "type": "debug",
+        "z": "d01dd54a43c0372f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "efa230a7b3b7c2c6",
+        "type": "function",
+        "z": "d01dd54a43c0372f",
+        "name": "",
+        "func": "// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al siguiente nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "197a163378edecc3",
+                "bbd3886df0fefad3"
+            ]
+        ]
+    },
+    {
+        "id": "bbd3886df0fefad3",
+        "type": "ui_text_input",
+        "z": "d01dd54a43c0372f",
+        "name": "",
+        "label": "Hora Actual:",
+        "tooltip": "--- by Marving ---",
+        "group": "b8c410d9780185c4",
+        "order": 1,
+        "width": "10",
+        "height": "1",
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 610,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b8c410d9780185c4",
+        "type": "ui_group",
+        "name": "Fecha y Horario",
+        "tab": "722e85b681775bd8",
+        "order": 1,
+        "disp": true,
+        "width": 10,
+        "collapse": false
+    },
+    {
+        "id": "722e85b681775bd8",
+        "type": "ui_tab",
+        "d": true,
+        "name": "Hora de Flow2",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
